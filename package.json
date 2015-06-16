@@ -1,0 +1,30 @@
+{
+  "name": "capstone",
+  "version": "0.0.0",
+  "description": "A bucket list app for people who love to travel",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JMHill/capstone.git"
+  },
+  "keywords": [
+    "travel",
+    "vacations"
+  ],
+  "author": "Justin M Hill",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JMHill/capstone/issues"
+  },
+  "homepage": "https://github.com/JMHill/capstone#readme",
+  "dependencies": {
+    "express": "^4.12.4"
+  },
+  "devDependencies": {
+    "chai-http": "^1.0.0",
+    "mocha": "^2.2.5"
+  }
+}
