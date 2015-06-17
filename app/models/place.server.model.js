@@ -2,9 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PlaceSchema = new Schema({
-	name: String,
-	tags: Array,
-	reports: Array
+	city: String,
+	country: {
+		type: String,
+		required: true
+	},
+	// tags: [{?}] TODO: Figure out best way to record tags
 });
 
 mongoose.model('Place', PlaceSchema);
