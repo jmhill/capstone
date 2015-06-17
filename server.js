@@ -10,6 +10,6 @@ var app = express();
 
 app.listen(8080);
 
-module.exports = app;
+exports.app = app;
 
 console.log('server running at localhost:3000');
