@@ -12,4 +12,4 @@ app.listen(8080);
 
 exports.app = app;
 
-console.log('server running at localhost:3000');
+console.log('server running at localhost:8080');
