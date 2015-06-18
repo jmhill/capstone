@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/JMHill/capstone#readme",
   "dependencies": {
+    "ejs": "^2.3.1",
     "express": "^4.12.4",
     "mongoose": "^4.0.5"
   },
