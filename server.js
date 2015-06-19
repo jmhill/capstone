@@ -9,7 +9,6 @@ var app = express();
 // var passport = passport();
 
 app.listen(8080);
+console.log('server running at localhost:8080');
 
 exports.app = app;
-
-console.log('server running at localhost:8080');
