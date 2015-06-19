@@ -6,7 +6,7 @@ var PlaceSchema = new Schema({
 	country: {
 		type: String,
 		required: true
-	},
+	}
 	// tags: [{?}] TODO: Figure out best way to record tags
 });
 
