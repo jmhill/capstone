@@ -13,7 +13,7 @@ chai.use(chaiHttp);
 describe('Bucket List of Destinations', function(){
 	it('should list destinations on GET request', function(done){
 		chai.request(app).
-			.get('/list/places')
+			.get('/')
 			.end(function(err, res) {
 				res.should.be(json);
 				res.body.should.be.a('array');
