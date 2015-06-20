@@ -1,4 +1,4 @@
-var bucketList = require('mongoose').model('BucketList');
+var BucketList = require('mongoose').model('BucketList');
 
 exports.addPlace = function() {
 	// add a new place/destination to the bucketlist
