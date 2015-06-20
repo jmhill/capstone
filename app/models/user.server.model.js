@@ -10,11 +10,6 @@ var UserSchema = new Schema({
 		unique: true
 	},
 	password: String,
-	bucketList: [{
-		type: Schema.ObjectId,
-		ref: 'BucketList'
-
-	}],
 	created: {
 		type: Date,
 		default: Date.now
