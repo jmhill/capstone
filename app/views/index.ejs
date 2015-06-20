@@ -6,7 +6,26 @@
 <body>
 	<!-- Header will go here -->
 	<h1> <!-- List name here --> Hi there. </h1>
-	<!-- List items here -->
+
+	<!-- Form to submit place data -->
+	<form action="/places" method="post">
+	    <div>
+	      <label>Country:</label>
+	      <input type="text" name="country" />
+	    </div>
+	    <div>
+	      <label>City:</label>
+	      <input type="text" name="city" />
+	    </div>
+	    <div>
+	      <input type="submit" value="Add a new place" />
+	    </div>
+  	</form>
+
 	<!-- Footer will go here -->
+
+	<!-- JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="/main.js">
 </body>
 </html>  
