@@ -9,20 +9,9 @@
 		<% include ../partials/header %>
 	</header>
 
-	<!-- Form to submit place data -->
-	<form action="/places" method="post">
-	    <div>
-	      <label>Country:</label>
-	      <input type="text" name="country" />
-	    </div>
-	    <div>
-	      <label>City:</label>
-	      <input type="text" name="city" />
-	    </div>
-	    <div>
-	      <input type="submit" value="Add a new place" />
-	    </div>
-  	</form>
+	<div>
+		<% include ../partials/places %>
+	</div>
 
 	<footer>
 		<% include ../partials/footer %>
@@ -30,6 +19,6 @@
 
 	<!-- JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="/main.js">
+	<script src="main.js"></script>
 </body>
 </html>  
