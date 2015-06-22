@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> <%= title %> </title>
+	<%= include ../partials/head %>
 </head>
 <body>
-	<!-- Header will go here -->
-	<h1> <!-- List name here --> Hi there. </h1>
+
+	<header>
+		<% include ../partials/header %>
+	</header>
 
 	<!-- Form to submit place data -->
 	<form action="/places" method="post">
@@ -22,7 +24,9 @@
 	    </div>
   	</form>
 
-	<!-- Footer will go here -->
+	<footer>
+		<% include ../partials/footer %>
+	</footer>
 
 	<!-- JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
