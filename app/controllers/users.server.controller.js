@@ -30,4 +30,14 @@ exports.renderSignin = function(req, res, next) {
 	} else {
 		return res.redirect('/');
 	}
-}
+};
+
+exports.renderSignup = function(req, res, next) {
+	if (!req.user) {
+		res.render('pages/signup', {
+			title: 'Sign Up',
+		});
+	} else {
+		return res.redirect('/');
+	}
+};
