@@ -1,0 +1,20 @@
+<!-- Form to submit place data -->
+<form action="/places" method="post">
+    <div>
+      <label>Country:</label>
+      <input type="text" name="country" />
+    </div>
+    <div>
+      <label>City:</label>
+      <input type="text" name="city" />
+    </div>
+    <div>
+      <input type="submit" value="Add a new place" />
+    </div>
+	</form>
+
+<ul>
+<% places.forEach(function(place) { %>
+	<li> <%= place.city %>, <%= place.country %> </li>
+<% }); %>
+</ul>
