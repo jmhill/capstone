@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>
-    <%=title %>
-  </title>
+  <% include ../partials/head %>
 </head>
-<body>
-  <form action="/signin" method="post">
-    <div>
+
+<body class="container">
+
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <form action="/signin" method="post" role="form">
+    <div class="form-group">
       <label>Username:</label>
-      <input type="text" name="username" />
+      <input type="text" class="form-control" name="username" />
     </div>
     <div>
       <label>Password:</label>
-      <input type="password" name="password" />
+      <input type="password" class="form-control" name="password" />
     </div>
     <div>
-      <input type="submit" value="Sign In" />
+      <input type="submit" class="btn btn-default" value="Sign In" />
     </div>
   </form>
-   <!-- <a href="/oauth/facebook">Sign in with Facebook</a> -->
+  
+  <footer class="footer">  
+   <% include ../partials/footer %>
+  </footer>
+
 </body>
+
 </html>
