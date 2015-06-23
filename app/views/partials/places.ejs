@@ -1,15 +1,15 @@
 <!-- Form to submit place data -->
-<form action="/places" method="post">
-    <div>
+<form action="/places" method="post" role="form">
+    <div class="form-group">
       <label>Country:</label>
-      <input type="text" name="country" />
+      <input type="text" class="form-control" name="country" />
     </div>
-    <div>
+    <div class="form-group">
       <label>City:</label>
-      <input type="text" name="city" />
+      <input type="text" class="form-control" name="city" />
     </div>
-    <div>
-      <input type="submit" value="Add a new place" />
+    <div class="form-group">
+      <input type="submit" class="btn btn-default" value="Add a new place" />
     </div>
 	</form>
 
