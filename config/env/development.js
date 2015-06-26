@@ -1,3 +1,4 @@
 module.exports = {
-	db: 'mongodb://localhost/capstone'
+	db: 'mongodb://localhost/capstone-dev',
+	sessionSecret: 'developmentSessionSecret'
 }

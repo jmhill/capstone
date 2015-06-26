@@ -21,14 +21,18 @@
   },
   "homepage": "https://github.com/JMHill/capstone#readme",
   "dependencies": {
+    "body-parser": "^1.13.1",
+    "compress": "^0.99.0",
     "ejs": "^2.3.1",
     "express": "^4.12.4",
-    "mongoose": "^4.0.5"
+    "express-session": "^1.11.3",
+    "mongoose": "^4.0.5",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^3.0.0",
     "chai-http": "^1.0.0",
-    "mocha": "^2.2.5",
     "morgan": "^1.6.0"
   }
 }
