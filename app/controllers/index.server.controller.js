@@ -3,6 +3,7 @@ exports.render = function(req, res) {
 		title: 'Testing',
 		places: [
 			{ city: 'Exampleville', country: 'USA'}
-		]
+		],
+		userFirstName: req.user ? req.user.firstName : 'Traveler'
 	});
 };
