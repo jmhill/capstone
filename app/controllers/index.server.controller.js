@@ -1,9 +1,9 @@
 exports.render = function(req, res) {
 	res.render('pages/index', {
-		title: 'Testing',
+		title: 'Capstone Project',
 		places: [
 			{ city: 'Exampleville', country: 'USA'}
 		],
-		userFirstName: req.user ? req.user.firstName : 'Traveler'
+		userFirstName: req.user ? req.user.firstName : ''
 	});
 };

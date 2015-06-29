@@ -35,7 +35,7 @@ exports.signup = function(req, res, next) {
 					return next(err);
 				}
 				return res.redirect('/');
-			});	
+			});
 		});
 	} else {
 		res.redirect('/');
@@ -51,6 +51,7 @@ exports.renderSignin = function(req, res, next) {
 	if (!req.user) {
 		res.render('pages/signin', {
 			title: 'Sign-in Form',
+			userFirstName: req.user ? req.user.firstName : ''
 		});
 	} else {
 		return res.redirect('/');
@@ -61,6 +62,7 @@ exports.renderSignup = function(req, res, next) {
 	if (!req.user) {
 		res.render('pages/signup', {
 			title: 'Sign Up',
+			userFirstName: req.user ? req.user.firstName : ''
 		});
 	} else {
 		return res.redirect('/');
