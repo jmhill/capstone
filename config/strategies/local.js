@@ -18,13 +18,13 @@ module.exports = function() {
                 if (!user) {
                     console.log('User not found')
                     return done(null, false, {
-                        message: 'Incorrect username.'
+                        message: 'Incorrect username.' // For flash messages
                     });
                 }
 
                 if (user.password != password) {
                     return done(null, false, {
-                        message: 'Incorrect password.'
+                        message: 'Incorrect password.' // For flash messages
                     });
                 }
 
