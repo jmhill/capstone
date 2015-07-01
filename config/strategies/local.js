@@ -20,15 +20,22 @@ module.exports = function() {
                     return done(null, false, {
                         message: 'Incorrect username.' // For flash messages
                     });
-                }
+                } else {
+                  user.comparePassword(password, function(err, isMatch) {
+                    if (err) {
+                      console.log(err.message);
+                      return done(err);
+                    }
 
-                if (user.password != password) {
-                    return done(null, false, {
-                        message: 'Incorrect password.' // For flash messages
-                    });
+                    if (isMatch) {
+                      return done(null, user);
+                    } else {
+                      return done(null, false, {
+                        message: 'Incorrect password'
+                      });
+                    }
+                  });
                 }
-
-                return done(null, user);
             });
         }
     ));
