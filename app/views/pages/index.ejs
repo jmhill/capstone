@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%= include ../partials/head %>
+	<% include ../partials/head %>
 </head>
 <body class="container">
 
 	<header>
-		<% include ../partials/header %>
+		<%- include ../partials/header %>
 	</header>
 
-	<div>
-		<% include ../partials/places %>
-	</div>
+	<% if (userFirstName) { %>
+		<div>
+			<% include ../partials/places %>
+		</div>
+	<% } else { %>
+		<div>
+			<h1>Welcome</h1>
+			<p>Please sign in or create an account</p>
+		</div>
+	<% } %>
 
 	<footer class="footer">
 		<% include ../partials/footer %>
