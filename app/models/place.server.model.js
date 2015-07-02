@@ -6,7 +6,11 @@ var PlaceSchema = new Schema({
 	country: {
 		type: String,
 		required: true
-	}
+	},
+	followers: [{
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	}]
 	// tags: [{?}] TODO: Figure out best way to record tags
 });
 
