@@ -18,7 +18,10 @@ var UserSchema = new Schema({
 	created: {
 		type: Date,
 		default: Date.now
-	}
+	},
+	places: [
+		{ type: Schema.Types.ObjectId, ref: 'Place' }
+	]
 });
 
 UserSchema.pre('save', function(next) {
