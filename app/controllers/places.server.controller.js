@@ -1,7 +1,7 @@
 var Place = require('mongoose').model('Place');
 
 exports.create = function(req, res, next) {
-	var place = new Place();
+	var place = new Place(req.body);
 
 	place.save(function(err) {
 		if (err) {
@@ -13,7 +13,9 @@ exports.create = function(req, res, next) {
 };
 
 exports.list = function(req, res, next) {
-	Place.find({}, function(err, places) {
+	Place.find({
+		user_id: {}
+	}, function(err, places) {
 		if (err) {
 			return next(err);
 		} else {

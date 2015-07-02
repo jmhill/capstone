@@ -1,4 +1,4 @@
-var places = require('../../app/controllers/place.server.controller.js');
+var places = require('../../app/controllers/places.server.controller.js');
 
 module.exports = function(app) {
 	app.route('/places')
