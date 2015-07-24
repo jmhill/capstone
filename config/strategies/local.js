@@ -18,7 +18,7 @@ module.exports = function() {
                 if (!user) {
                     console.log('User not found')
                     return done(null, false, {
-                        message: 'Incorrect username.' // For flash messages
+                      message: 'Incorrect username.' // For flash messages
                     });
                 } else {
                   user.comparePassword(password, function(err, isMatch) {

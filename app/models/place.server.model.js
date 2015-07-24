@@ -15,3 +15,5 @@ var PlaceSchema = new Schema({
 });
 
 mongoose.model('Place', PlaceSchema);
+
+// TODO pre-save hook to aggregate services (lifecycle hook?) have service return a function
