@@ -1,6 +1,6 @@
 <% places.forEach(function(place) { %>
   <div class="travelDestination" data-id=<%= place._id %>>
-    <h2><%= place.city %>, <%= place.country %></h2>
+    <h2><% if (place.city) { %><%= place.city %>, <% } %><%= place.country %></h2>
     <p>Example Text</p>
     <button type="button" class="remove-place">Remove</button>
   </div>

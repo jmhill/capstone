@@ -47,6 +47,7 @@ exports.addPlace = function(req, res, next) {
 				var newPlace = new Place({
 					city: req.body.city,
 					country: req.body.country,
+					googlePlaceId: req.body.googlePlaceId,
 					followers: userid
 				});
 				newPlace.save(function(err) {
