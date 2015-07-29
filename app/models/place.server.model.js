@@ -10,7 +10,8 @@ var PlaceSchema = new Schema({
 	followers: [{
 		type: Schema.Types.ObjectId,
 		ref: 'User'
-	}]
+	}],
+	googlePlaceId: String
 	// tags: [{?}] TODO: Figure out best way to record tags
 });
 
