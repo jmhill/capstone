@@ -35,7 +35,7 @@ $(document).ready(function(){
           city: city ? city : null,
           country: country,
           googlePlaceId: place.place_id
-        }
+        };
 
         $.post('/places', placeObject, function(place) {
           console.log('Sending post request for place: ' + place.city);

@@ -8,7 +8,7 @@ exports.renderPlaces = function(req, res, next) {
 			.populate('places')
 			.exec(function(err, user) {
 				if (err) {
-					return next(err)
+					return next(err);
 				} else {
 					console.log("rendering place list now...\n", user.places);
 					res.render('partials/places', {
@@ -38,7 +38,7 @@ exports.addPlace = function(req, res, next) {
 					User.findById(userid, function(err, user) {
 						user.places.addToSet(place._id);
 						user.save(function(err) {});
-					})
+					});
 				});
 				res.json(place);
 			}
@@ -57,7 +57,7 @@ exports.addPlace = function(req, res, next) {
 					User.findById(userid, function(err, user) {
 						user.places.addToSet(newPlace._id);
 						user.save(function(err) {});
-					})
+					});
 				});
 				res.json(newPlace);
 			}

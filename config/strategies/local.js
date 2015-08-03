@@ -16,7 +16,7 @@ module.exports = function() {
                 }
 
                 if (!user) {
-                    console.log('User not found')
+                    console.log('User not found');
                     return done(null, false, {
                       message: 'Incorrect username.' // For flash messages
                     });
