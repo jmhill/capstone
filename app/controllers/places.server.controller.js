@@ -10,7 +10,6 @@ exports.renderPlaces = function(req, res, next) {
 				if (err) {
 					return next(err);
 				} else {
-					console.log("rendering place list now...\n", user.places);
 					res.render('partials/places', {
 						places: user.places
 					});
@@ -43,7 +42,6 @@ exports.addPlace = function(req, res, next) {
 				res.json(place);
 			}
 			else {
-				console.log('Creating new place');
 				var newPlace = new Place({
 					city: req.body.city,
 					country: req.body.country,
