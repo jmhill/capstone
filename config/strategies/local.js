@@ -11,7 +11,6 @@ module.exports = function() {
                 emailAddress: email
             }, function (err, user) {
                 if (err) {
-                    console.log(err.message);
                     return done(err);
                 }
 
@@ -23,7 +22,6 @@ module.exports = function() {
                 } else {
                   user.comparePassword(password, function(err, isMatch) {
                     if (err) {
-                      console.log(err.message);
                       return done(err);
                     }
 

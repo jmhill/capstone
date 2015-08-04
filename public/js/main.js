@@ -17,7 +17,6 @@ $(document).ready(function(){
       event.preventDefault();
       var city, country, placeObject;
       var place = autocomplete.getPlace();
-      console.log(place);
       if (place) {
         var placeInfo = place.address_components;
         for (var i=0; i < placeInfo.length; i++) {
@@ -38,7 +37,6 @@ $(document).ready(function(){
         };
 
         $.post('/places', placeObject, function(place) {
-          console.log('Sending post request for place: ' + place.city);
           getPlaces();
         });
 
@@ -51,7 +49,6 @@ $(document).ready(function(){
   }
 
   $('#place-container').on('click', '.remove-place', function(event) {
-    console.log("remove button clicked");
     event.preventDefault();
     var placeId = $(event.target).parent().data("id");
     $.ajax('/places/' + placeId, {
