@@ -64,7 +64,6 @@ exports.addPlace = function(req, res, next) {
 
 exports.removePlace = function(req, res, next) {
 	var placeId = req.params.id;
-	console.log(placeId);
 	User.findById(req.user.id, function(err, user) {
 		user.places.pull({ _id: placeId });
 		user.save(function(err) {});
