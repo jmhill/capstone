@@ -1,65 +1,62 @@
 $(document).ready(function(){
 
-  // Knockout
-  var placesData = $.getJSON('/places', function(places) {
-    console.log(places);
-  });
-  var placesViewModel = {
-    // places: ko.observableArray(placesData),
-    // this.addPlace:
-  };
-
-  function getPlaces() {
-    $.get('/places', function(places) {
-      $("#place-container").html(places);
-    });
+  // Place UI Object
+  function Place(city, country, id) {
+    var self = this;
+    self.city = city;
+    self.country = country;
+    self.id = id;
+    self.fullPlaceName = self.city ? self.city + ', ' + self.country : self.country;
   }
 
-  $('#add-place').click(function(event) {
-    event.preventDefault();
-    var city, country, placeObject;
-    var place = autocomplete.getPlace();
-    if (place) {
-      var placeInfo = place.address_components;
-      for (var i=0; i < placeInfo.length; i++) {
-        for(var j=0; j < placeInfo[i].types.length; j++) {
-          if (placeInfo[i].types[j] == "locality") {
-            city = placeInfo[i].short_name;
-          }
-          if (placeInfo[i].types[j] == "country") {
-            country = placeInfo[i].long_name;
+  // Knockout ViewModel
+  function placesViewModel() {
+    var self = this;
+    // Data
+    self.places = ko.observableArray([]);
+
+    // Operations
+    self.addPlace = function() {
+      var city, country, placeObject;
+      var place = autocomplete.getPlace();
+      if (place) {
+        var placeInfo = place.address_components;
+        for (var i=0; i < placeInfo.length; i++) {
+          for(var j=0; j < placeInfo[i].types.length; j++) {
+            if (placeInfo[i].types[j] == "locality") {
+              city = placeInfo[i].short_name;
+            }
+            if (placeInfo[i].types[j] == "country") {
+              country = placeInfo[i].long_name;
+            }
           }
         }
+        placeObject = {
+          city: city ? city : null,
+          country: country,
+          googlePlaceId: place.place_id
+        };
+        $.post('/places', placeObject, function(postedPlace) {
+          self.places.push(new Place(city, country, postedPlace.id));
+        });
       }
-
-      placeObject = {
-        city: city ? city : null,
-        country: country,
-        googlePlaceId: place.place_id
-      };
-
-      $.post('/places', placeObject, function(place) {
-        getPlaces();
+    };
+    self.removePlace = function(place) {
+      $.ajax('/places/' + place.id, {
+          type: 'DELETE',
+          dataType: 'json',
+          success: function(place) {
+            self.places.remove(place);
+          }
       });
+    };
 
-      $('#place-search').val('');
-    } else {
-      alert("Select a place from the list");
-    }
-
-  });
-
-  $('#place-container').on('click', '.remove-place', function(event) {
-    event.preventDefault();
-    var placeId = $(event.target).parent().data("id");
-    $.ajax('/places/' + placeId, {
-        type: 'DELETE',
-        dataType: 'json'
-    }).done(function(data) {
-      getPlaces();
+    // Load initial state from server
+    $.getJSON('/places', function(places) {
+      var mappedPlaces = $.map(places, function(place) {
+        return new Place(place.city, place.country, place._id);
+      });
+      self.places(mappedPlaces);
     });
-  });
-
-
-  getPlaces();
+  }
 });
