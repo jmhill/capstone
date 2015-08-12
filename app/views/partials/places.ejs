@@ -1,7 +1,9 @@
-<% places.forEach(function(place) { %>
-  <div class="travelDestination" data-id=<%= place._id %>>
-    <h2><% if (place.city) { %><%= place.city %>, <% } %><%= place.country %></h2>
-    <p>Example Text</p>
-    <button type="button" class="remove-place">Remove</button>
+<input id="place-search" />
+<button data-bind="click: addPlace">Add Place to my List</button>
+
+<div data-bind="foreach: places">
+  <div>
+    <span data-bind="text: fullPlaceName"></span>
+    <button data-bind="click: $parent.removePlace">Remove</button>
   </div>
-<% }); %>
+</div>

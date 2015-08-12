@@ -1,20 +1,22 @@
 $(document).ready(function(){
 
-  function getPlaces() {
-    $.get('/places', function(places) {
-      $("#place-container").html(places);
-    });
+  // Place UI Object
+  function Place(city, country, id) {
+    var self = this;
+    self.city = city;
+    self.country = country;
+    self.id = id;
+    self.fullPlaceName = self.city ? self.city + ', ' + self.country : self.country;
   }
 
-  function initialize() {
+  // Knockout ViewModel
+  function placesViewModel() {
+    var self = this;
+    // Data
+    self.places = ko.observableArray([]);
 
-    var input = document.getElementById('place-search');
-    var autocomplete = new google.maps.places.Autocomplete(input, {
-      types: ['(regions)']
-    });
-
-    $('#add-place').click(function(event) {
-      event.preventDefault();
+    // Operations
+    self.addPlace = function() {
       var city, country, placeObject;
       var place = autocomplete.getPlace();
       if (place) {
@@ -29,36 +31,32 @@ $(document).ready(function(){
             }
           }
         }
-
         placeObject = {
           city: city ? city : null,
           country: country,
           googlePlaceId: place.place_id
         };
-
-        $.post('/places', placeObject, function(place) {
-          getPlaces();
+        $.post('/places', placeObject, function(postedPlace) {
+          self.places.push(new Place(city, country, postedPlace.id));
         });
-
-        $('#place-search').val('');
-      } else {
-        alert("Select a place from the list");
       }
+    };
+    self.removePlace = function(place) {
+      $.ajax('/places/' + place.id, {
+          type: 'DELETE',
+          dataType: 'json',
+          success: function(place) {
+            self.places.remove(place);
+          }
+      });
+    };
 
+    // Load initial state from server
+    $.getJSON('/places', function(places) {
+      var mappedPlaces = $.map(places, function(place) {
+        return new Place(place.city, place.country, place._id);
+      });
+      self.places(mappedPlaces);
     });
   }
-
-  $('#place-container').on('click', '.remove-place', function(event) {
-    event.preventDefault();
-    var placeId = $(event.target).parent().data("id");
-    $.ajax('/places/' + placeId, {
-        type: 'DELETE',
-        dataType: 'json'
-    }).done(function(data) {
-      getPlaces();
-    });
-  });
-
-  google.maps.event.addDomListener(window, 'load', initialize);
-  getPlaces();
 });
