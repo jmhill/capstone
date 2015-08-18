@@ -9,7 +9,7 @@ $(document).ready(function(){
     self.fullPlaceName = self.city ? self.city + ', ' + self.country : self.country;
   }
 
-  // Knockout ViewModel
+  // Knockout placesViewModel
   function placesViewModel() {
     var self = this;
     // Data
@@ -58,5 +58,8 @@ $(document).ready(function(){
       });
       self.places(mappedPlaces);
     });
-  }
+  } // End placesViewModel
+
+  ko.applyBindings(new placesViewModel);
+
 });
