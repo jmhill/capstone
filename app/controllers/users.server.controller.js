@@ -45,3 +45,10 @@ exports.renderSignup = function(req, res, next) {
 		return res.redirect('/');
 	}
 };
+
+exports.renderHome = function(req, res, next) {
+	res.render('pages/my', {
+		title: 'My Places',
+		userFirstName: req.user ? req.user.firstName : ''
+	});
+};
