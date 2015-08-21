@@ -60,6 +60,6 @@ $(document).ready(function(){
     });
   } // End placesViewModel
 
-  ko.applyBindings(new placesViewModel);
+  ko.applyBindings(new placesViewModel());
 
 });
