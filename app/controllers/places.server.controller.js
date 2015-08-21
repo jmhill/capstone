@@ -1,7 +1,7 @@
 var Place = require('mongoose').model('Place');
 var User = require('mongoose').model('User');
 
-exports.renderPlaces = function(req, res, next) {
+exports.getPlaces = function(req, res, next) {
 	if (req.user) {
 		var id = req.user.id;
 		User.findById(id, 'places')
@@ -10,9 +10,7 @@ exports.renderPlaces = function(req, res, next) {
 				if (err) {
 					return next(err);
 				} else {
-					res.render('partials/places', {
-						places: user.places
-					});
+					res.json(user.places);
 				}
 			});
 	}
@@ -66,7 +64,8 @@ exports.removePlace = function(req, res, next) {
 	var placeId = req.params.id;
 	User.findById(req.user.id, function(err, user) {
 		user.places.pull({ _id: placeId });
-		user.save(function(err) {});
-		res.json({ removed: true });
+		user.save(function(err) {
+			res.json({ removed: true });
+		});
 	});
 };

@@ -37,7 +37,7 @@ $(document).ready(function(){
           googlePlaceId: place.place_id
         };
         $.post('/places', placeObject, function(postedPlace) {
-          self.places.push(new Place(city, country, postedPlace.id));
+          self.places.push(new Place(city, country, postedPlace._id));
         });
       }
     };
@@ -45,8 +45,10 @@ $(document).ready(function(){
       $.ajax('/places/' + place.id, {
           type: 'DELETE',
           dataType: 'json',
-          success: function(place) {
-            self.places.remove(place);
+          success: function(response) {
+            if (response.removed === true) {
+              self.places.remove(place);
+            }
           }
       });
     };
